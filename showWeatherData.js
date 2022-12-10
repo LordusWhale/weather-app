@@ -12,7 +12,7 @@ export const showWeatherData = (weatherData, locationName) => {
             mainContainer.append(createFutureWeatherDiv(weatherData[day], day));
         }
     }
-    $('ul').click(e=>{
+    $('.weather-types').click(e=>{
         const dataType = e.target.dataset.type;
         const listElements = $(e.target).parent().children('li');
         const name = $(e.target).parent().parent().children('h1')[0].innerText;
@@ -22,7 +22,6 @@ export const showWeatherData = (weatherData, locationName) => {
             listElements[index].classList.remove('active')
         })
         const stats = $(e.target).parent().parent().children('div').children('div');
-        console.log(weatherData[name]);
         stats.html(updateStat(dataType, weatherData[name]))
 
 
@@ -84,7 +83,7 @@ const createFutureWeatherDiv = (day, date) => {
                 <p>${day.temp.highest}C</p>
             </div>
                  
-            <ul>
+            <ul class="weather-types">
                 <li data-type="temp" class="active">Temperature</li>
                 <li data-type="wind">Wind</li>
                 <li data-type="humidity">Humidity</li>

@@ -24,6 +24,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 30px;
  
 }
 main {
@@ -64,6 +66,23 @@ section {
 }
 #search-city:focus {
     outline: none;
+}
+.previously-searched {
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+.previously-searched > ul{
+    display: flex;
+    gap: 20px;
+    font-size: 1.2rem;
+
+}
+.previously-searched > ul > li {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top:  1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    cursor: pointer;
 }
 .found-cities {
     position: absolute;

@@ -1,4 +1,7 @@
 import {findWeatherResults} from './getWeatherData.js'
+import { updatePrevSearches } from './previouslySearched.js';
+updatePrevSearches();
+
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 const showCityResults = () => {
   $("#found-cities").html("");
@@ -76,6 +79,8 @@ const showSearchResults = async (searchQuery) => {
     .on("click", (e) => {
       const locationName = $(e.target).text();
       const { lat, long } = e.target.dataset;
+      saveSearchToLS({lat, long, locationName, id: Date.now()});
+      updatePrevSearches();
       findWeatherResults(parseInt(lat), parseInt(long), locationName);
       $("#search-city").val(locationName);
       hideCityResults();
@@ -84,3 +89,21 @@ const showSearchResults = async (searchQuery) => {
 //, wind: day.wind.speed, humidity: day.main.humidity})
 
 
+const saveSearchToLS = (search) => {
+  const searchLS = JSON.parse(localStorage.getItem('search'));
+  if (searchLS) {
+    if (searchLS.length < 7){
+      localStorage.setItem('search', JSON.stringify([...searchLS, search]));
+    } else {
+      const min = Math.min(...searchLS.map(search=>search.id));
+      const last = searchLS.map(s=>{
+        if (s.id === min) return search;
+        return s;
+      })
+      localStorage.setItem('search', JSON.stringify(last));
+    }
+    
+  } else {
+    localStorage.setItem('search', JSON.stringify([search]));
+  }
+}
