@@ -1,4 +1,17 @@
-export const getWeatherByDay = (days) => {
+import { showWeatherData } from "./showWeatherData.js";
+
+export const findWeatherResults = async (lat, lon, locationName) => {
+
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
+    );
+    const weatherData = await response.json();
+    const weatherByDay = getWeatherByDay(weatherData.list);
+    showWeatherData(weatherByDay, locationName);
+  };
+  
+
+const getWeatherByDay = (days) => {
     let weather = {};
     days.forEach((day) => {
       let date = dayjs(day.dt_txt).format("dddd, MMMM Do");

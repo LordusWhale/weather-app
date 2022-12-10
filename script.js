@@ -1,6 +1,4 @@
-import {getWeatherByDay} from './getWeatherData.js'
-import { showWeatherData } from './showWeatherData.js';
-
+import {findWeatherResults} from './getWeatherData.js'
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 const showCityResults = () => {
   $("#found-cities").html("");
@@ -85,13 +83,4 @@ const showSearchResults = async (searchQuery) => {
 };
 //, wind: day.wind.speed, humidity: day.main.humidity})
 
-const findWeatherResults = async (lat, lon, locationName) => {
-
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
-  );
-  const weatherData = await response.json();
-  const weatherByDay = getWeatherByDay(weatherData.list);
-  showWeatherData(weatherByDay, locationName);
-};
 

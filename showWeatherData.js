@@ -12,7 +12,22 @@ export const showWeatherData = (weatherData, locationName) => {
             mainContainer.append(createFutureWeatherDiv(weatherData[day], day));
         }
     }
+    $('ul').click(e=>{
+        const dataType = e.target.dataset.type;
+        const listElements = $(e.target).parent().children('li');
+        const name = $(e.target).parent().parent().children('h1')[0].innerText;
 
+
+        listElements.each(index=>{
+            listElements[index].classList.remove('active')
+        })
+        const stats = $(e.target).parent().parent().children('div').children('div');
+        console.log(weatherData[name]);
+        stats.html(updateStat(dataType, weatherData[name]))
+
+
+        e.target.classList.add('active');
+    })
 }
 
 
@@ -70,20 +85,50 @@ const createFutureWeatherDiv = (day, date) => {
             </div>
                  
             <ul>
-                <li class="active">Temperature</li>
-                <li>Wind</li>
-                <li>Humidity</li>
+                <li data-type="temp" class="active">Temperature</li>
+                <li data-type="wind">Wind</li>
+                <li data-type="humidity">Humidity</li>
             </ul>
             <div class="stats">
                 <div class="grid-item">
                     <h2>Temperature:</h2>
                     <p>Maximum: ${day.temp.highest} C</p>
-                    <p>Lowest: ${day.temp.lowest} C</p>
+                    <p>Minimum: ${day.temp.lowest} C</p>
                     <p>Average: ${day.temp.average} C</p>
                 </div>
           
             </div>
      </section>
     
+    `
+}
+
+const updateStat = (type, day) => {
+
+    switch (type) {
+        case "temp":
+            return `
+            <h2>Temperature</h2>
+            <p>Maximum: ${day.temp.highest} C</p>
+            <p>Minimum: ${day.temp.lowest} C</p>
+            <p>Average: ${day.temp.average} C</p>
+            `
+        case "wind": 
+            return `
+            <h2>Wind</h2>
+            <p>Maximum: ${day.wind.highest} KMPH</p>
+            <p>Minimum: ${day.wind.lowest} KMPH</p>
+            <p>Average: ${day.wind.average} KMPH</p>
+            `
+        case "humidity":
+            return `
+            <h2>Humidity</h2>
+            <p>Maximum: ${day.humidity.highest}%</p>
+            <p>Minimum: ${day.humidity.lowest}%</p>
+            <p>Average: ${day.humidity.average}%</p>
+            `
+    }
+    return `
+   
     `
 }
