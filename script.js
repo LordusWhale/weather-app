@@ -112,7 +112,7 @@ const findWeatherResults = async (lat, lon) => {
     weather[day] = {temp: tempStats, wind: windStats, humidity: humidityStats};
   }
 
-  console.log(weather);
+  
 
 }
 
