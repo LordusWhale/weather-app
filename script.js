@@ -92,6 +92,21 @@ const showSearchResults = async (searchQuery) => {
 const saveSearchToLS = (search) => {
   const searchLS = JSON.parse(localStorage.getItem('search'));
   if (searchLS) {
+    const searchContains = searchLS.filter(s=>{
+      if (s.locationName === search.locationName) {
+        return s;
+      }
+    })
+    if (searchContains.length > 0) {
+      const newSearch = searchLS.map(s=>{
+        if (s.locationName === search.locationName){
+          return {...s, id: Date.now()}
+        }
+        return s;
+      })
+      localStorage.setItem('search', JSON.stringify(newSearch));
+      return;
+    }
     if (searchLS.length < 7){
       localStorage.setItem('search', JSON.stringify([...searchLS, search]));
     } else {
