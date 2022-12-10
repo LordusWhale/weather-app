@@ -62,6 +62,9 @@ section {
     text-align: left;
     border-radius: 10px;
 }
+#search-city:focus {
+    outline: none;
+}
 .found-cities {
     position: absolute;
     visibility: hidden;
@@ -79,6 +82,9 @@ section {
 }
 .found-cities > ul > li {
     padding: 4px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
     font-size: larger;
 }
 .main-content {
