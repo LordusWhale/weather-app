@@ -178,9 +178,6 @@ li {
     }
 }
 @media screen and (max-width: 1900px) {
-    .main-content {
-        
-    }
     .today {
         flex-direction: column;
         text-align: center;

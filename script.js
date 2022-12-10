@@ -14,22 +14,46 @@ $('#search-city').on('click', (e) => {
   $('#search-city').val('');
 })
 
+let searchTimer;
+let time = 0;
+
+const searchTimerFunctions = {
+  statTime: (searchQuery) => {
+    searchTimer = setInterval(()=>{
+      time += 100;
+      if (time === 400){
+        showSearchResults(searchQuery)
+        clearInterval(searchTimer);
+        time = 0;
+        return;
+      }
+    }, 100);
+  }, 
+  stopTime: () => {
+    if (searchTimer){
+      time = 0;
+      clearInterval(searchTimer);
+    }
+  }
+}
+
+
 $("#search-city").on("input", (e) => {
   if (e.target.value === "") {
     hideCityResults();
     return;
   }
-  showSearchResults(e.target.value);
+  searchTimerFunctions.stopTime();
+  searchTimerFunctions.statTime(e.target.value);
 });
 
 const showSearchResults = async (searchQuery) => {
+
   const response = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
   );
-  console.log(response);
   const citiesFound = await response.json();
   if (!citiesFound) return;
-
   showCityResults();
   const shownData = citiesFound.map((city) => {
     return {
@@ -49,7 +73,6 @@ const showSearchResults = async (searchQuery) => {
     `)
   })
   $('#found-cities').children().on('click', (e)=>{
-    console.log(e.target.dataset);
     $('#search-city').val($(e.target).text());
     hideCityResults();
   })
