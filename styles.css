@@ -24,6 +24,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+ 
 }
 main {
     width: 100%;
@@ -32,6 +33,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 section {
@@ -45,6 +47,10 @@ section {
     width: 20em;
    
 }
+.search {
+    position: relative;
+    width: fit-content;
+}
 #search-city {
     font-size: 1.8rem;
     border: none;
@@ -56,6 +62,25 @@ section {
     text-align: left;
     border-radius: 10px;
 }
+.found-cities {
+    position: absolute;
+    visibility: hidden;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+}
+.found-cities > ul {
+    font-size: 1.2rem;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.found-cities > ul > li {
+    padding: 4px;
+    font-size: larger;
+}
 .main-content {
     background-color: transparent;
     width: 100%;
@@ -64,6 +89,7 @@ section {
     place-items: center;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+
     
 }
 .content > ul {
