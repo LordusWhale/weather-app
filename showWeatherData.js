@@ -1,3 +1,4 @@
+import { animateCards } from "./animations.js";
 
 
 
@@ -12,6 +13,8 @@ export const showWeatherData = (weatherData, locationName) => {
             mainContainer.append(createFutureWeatherDiv(weatherData[day], day));
         }
     }
+    const cards = document.querySelectorAll('.animate');
+    animateCards(cards);
     $('.weather-types').click(e=>{
         const dataType = e.target.dataset.type;
         const listElements = $(e.target).parent().children('li');
@@ -33,7 +36,7 @@ export const showWeatherData = (weatherData, locationName) => {
 const createTodayDiv = (day, date, locationName) => {
 
     return `
-    <section class="today">
+    <section class="today animate">
     <div>
       <h1>${locationName.substring(0, locationName.indexOf('('))}</h1>
       <h2>${locationName.substring(locationName.indexOf('('))}</h2>
@@ -74,7 +77,7 @@ const createTodayDiv = (day, date, locationName) => {
 
 const createFutureWeatherDiv = (day, date) => {
     return `
-    <section>
+    <section class="animate">
         <div class="content">
             <h1>${date}</h1>
             <img src="http://openweathermap.org/img/wn/${day.icon}@2x.png" alt="">

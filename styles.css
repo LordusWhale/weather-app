@@ -7,14 +7,24 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+
 .background-image {
     width: 100%;
     min-height: 100vh;
     background-color: #8EC5FC;
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
-    
 
+
+}
+.animate {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: all 1s;
+}
+.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 header {
     width: 100%;
@@ -26,8 +36,9 @@ header {
     justify-content: center;
     flex-direction: column;
     gap: 30px;
- 
+
 }
+
 main {
     width: 100%;
     height: 100vh;
@@ -47,43 +58,50 @@ section {
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     width: 20em;
-   
+
 }
+
 .search {
     position: relative;
     width: fit-content;
 }
+
 #search-city {
     font-size: 1.8rem;
     border: none;
     background-color: transparent;
-    border-bottom:2px solid rgba(255, 255, 255, 0.5) ;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 
     padding: 0.2em 0.8em;
     padding-right: 1em;
     text-align: left;
     border-radius: 10px;
 }
+
 #search-city:focus {
     outline: none;
 }
+
 .previously-searched {
     padding: 1em;
     display: flex;
     flex-wrap: wrap;
 }
-.previously-searched > ul{
+
+.previously-searched>ul {
     display: flex;
     gap: 20px;
     font-size: 1.2rem;
 
 }
-.previously-searched > ul > li {
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    border-top:  1px solid rgba(255, 255, 255, 0.5);
+
+.previously-searched>ul>li {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 10px;
     cursor: pointer;
 }
+
 .found-cities {
     position: absolute;
     visibility: hidden;
@@ -92,20 +110,23 @@ section {
     color: white;
     width: 100%;
 }
-.found-cities > ul {
+
+.found-cities>ul {
     font-size: 1.2rem;
     padding: 1em;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.found-cities > ul > li {
+
+.found-cities>ul>li {
     padding: 4px;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     cursor: pointer;
     font-size: larger;
 }
+
 .main-content {
     background-color: transparent;
     width: 100%;
@@ -115,45 +136,55 @@ section {
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 
-    
+
 }
-.content > ul {
+
+.content>ul {
     display: flex;
 }
-.content > ul > li {
+
+.content>ul>li {
     cursor: pointer;
     padding: 10px;
     border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
+
 li {
     list-style: none;
 }
-.content > img {
+
+.content>img {
     object-fit: contain;
     width: 4em;
 }
+
 .temperature {
     display: flex;
     gap: 20px;
     font-size: 1.4rem;
     font-weight: bold;
 }
+
 .min-temp {
     color: rgba(0, 0, 0, 0.5);
 }
+
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-.content > h1 {
+
+.content>h1 {
     padding: 10px;
 }
+
 .active {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
 }
+
 .stats {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -162,25 +193,29 @@ li {
     gap: 20px;
     width: 100%;
 }
+
 .grid-item {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     width: 100%;
 
 }
+
 .today {
-    grid-column: span 5; 
+    grid-column: span 5;
     width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: clamp(1.1rem, 2vw, 1.4rem);
     align-items: center;
 }
+
 .today-stats {
     display: flex;
     gap: 7em;
 }
-.today-stats > div {
+
+.today-stats>div {
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     padding: 1em;
     text-align: center;
@@ -188,11 +223,13 @@ li {
     flex-direction: column;
     gap: 20px;
 }
-.today-stats > div > ul {
+
+.today-stats>div>ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 .about {
     max-width: 200px;
     text-overflow: hidden;
@@ -202,10 +239,12 @@ li {
     .main-content {
         grid-template-columns: repeat(3, 1fr);
     }
+
     .today {
         grid-column: span 3;
     }
 }
+
 @media screen and (max-width: 1900px) {
     .today {
         flex-direction: column;
