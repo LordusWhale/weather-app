@@ -2,12 +2,18 @@ import { showWeatherData } from "./showWeatherData.js";
 
 export const findWeatherResults = async (lat, lon, locationName) => {
   // Fetches weather data
-    const response = await fetch(
+   await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
-    );
-    const weatherData = await response.json();
-    const weatherByDay = getWeatherByDay(weatherData.list);
-    showWeatherData(weatherByDay, locationName);
+    )
+    .then(res=>res.json())
+    .then(weatherData=>{
+      const weatherByDay = getWeatherByDay(weatherData.list);
+      showWeatherData(weatherByDay, locationName);
+    })
+    .catch(error=>{
+      return;
+    })
+ 
   };
   
 
