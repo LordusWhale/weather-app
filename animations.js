@@ -21,3 +21,22 @@ export const animateCards = (cards) => {
   });
   transitionDelayTime = 0;
 };
+
+export const animateHomeTitle = () => {
+  const text = "Weather Dashboard".split('');
+  transitionDelayTime = 0;
+  text.forEach(letter=>{
+    $('#home-title').append(`<span class="animate">${letter}</span>`)
+  })
+  let els = $('#home-title').children();
+    els.each(index=>{
+      console.log(els[index])
+      els[index].style.transitionDelay = `${transitionDelayTime}ms`;
+      transitionDelayTime += 80
+    })
+  const allLetters = document.querySelectorAll('.animate');
+  allLetters.forEach(letter=>{
+    observer.observe(letter);
+  })
+  transitionDelayTime = 0;
+}

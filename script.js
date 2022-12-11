@@ -1,7 +1,8 @@
+import { animateHomeTitle } from './animations.js';
 import {findWeatherResults} from './getWeatherData.js'
 import { updatePrevSearches } from './previouslySearched.js';
 updatePrevSearches(); // Gets and shows previously searched cities
-
+animateHomeTitle()
 
 // Region name converter, openweather api returns abbreviated country names e.g US or AU, changes it to full name
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
