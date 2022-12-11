@@ -107,16 +107,7 @@ const saveSearchToLS = (search) => {
       localStorage.setItem('search', JSON.stringify(newSearch));
       return;
     }
-    if (searchLS.length < 7){
       localStorage.setItem('search', JSON.stringify([...searchLS, search]));
-    } else {
-      const min = Math.min(...searchLS.map(search=>search.id));
-      const last = searchLS.map(s=>{
-        if (s.id === min) return search;
-        return s;
-      })
-      localStorage.setItem('search', JSON.stringify(last));
-    }
     
   } else {
     localStorage.setItem('search', JSON.stringify([search]));
