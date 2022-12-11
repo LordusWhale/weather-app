@@ -1,7 +1,7 @@
 import { showWeatherData } from "./showWeatherData.js";
 
 export const findWeatherResults = async (lat, lon, locationName) => {
-
+  // Fetches weather data
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
     );
@@ -13,6 +13,7 @@ export const findWeatherResults = async (lat, lon, locationName) => {
 
 const getWeatherByDay = (days) => {
     let weather = {};
+    // Each day from the weather api has 3 seperate entries, sorting each day and adding temperature, wind and humidity
     days.forEach((day) => {
       let date = dayjs(day.dt_txt).format("dddd, MMMM Do");
   
@@ -32,6 +33,7 @@ const getWeatherByDay = (days) => {
         weather[date].icon = day.weather[0].icon;
       }
     });
+    // Getting min, max and average of wind, temperature and humidity
     for (const day in weather) {
       const tempStats = getWeatherStats(weather[day].temp);
       const windStats = getWeatherStats(weather[day].wind);

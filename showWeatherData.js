@@ -1,32 +1,36 @@
 import { animateCards } from "./animations.js";
 
 
-
+// Displays weather data
 export const showWeatherData = (weatherData, locationName) => {
     const mainContainer =  $('#main')
+    // Removing previously searched / homepage
     mainContainer.html('');
-
+    // Appending weather data divs
     for (const day in weatherData) {
-        if (dayjs().format('dddd, MMMM Do') === day){
+        if (dayjs().format('dddd, MMMM Do') === day){ // If day is today
             mainContainer.append(createTodayDiv(weatherData[day], day, locationName))
         } else {
             mainContainer.append(createFutureWeatherDiv(weatherData[day], day));
         }
     }
+    // Animating cards using intersection observer api
     const cards = document.querySelectorAll('.animate');
     animateCards(cards);
+
+    // Creates a onclick handler for each card stat (temp, wind and humidity) then updates html
     $('.weather-types').click(e=>{
         const dataType = e.target.dataset.type;
-        const listElements = $(e.target).parent().children('li');
-        const name = $(e.target).parent().parent().children('h1')[0].innerText;
+        const listElements = $(e.target).parent().children('li'); // Getting each stat element
+        const name = $(e.target).parent().parent().children('h1')[0].innerText; // Name used to get day in weather data
 
 
         listElements.each(index=>{
             listElements[index].classList.remove('active')
         })
+        // Changing type of stat html
         const stats = $(e.target).parent().parent().children('div').children('div');
         stats.html(updateStat(dataType, weatherData[name]))
-
 
         e.target.classList.add('active');
     })
