@@ -86,7 +86,7 @@ const createFutureWeatherDiv = (day, date) => {
     <section class="animate">
         <div class="content">
             <h1>${date}</h1>
-            <img src="http://openweathermap.org/img/wn/${day.icon}@2x.png" alt="">
+            <img src="https://openweathermap.org/img/wn/${day.icon}@2x.png" alt="">
             <div class="temperature">
                 <p class="min-temp">${day.temp.lowest}C</p>
                 <p>${day.temp.highest}C</p>
