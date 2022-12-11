@@ -7,12 +7,14 @@ export const showWeatherData = (weatherData, locationName) => {
     // Removing previously searched / homepage
     mainContainer.html('');
     // Appending weather data divs
+    let firstRun = true;
     for (const day in weatherData) {
-        if (dayjs().format('dddd, MMMM Do') === day){ // If day is today
+        if (firstRun){ // Hacky solution: gets first element of weatherData and displays is as main weather div
             mainContainer.append(createTodayDiv(weatherData[day], day, locationName))
         } else {
             mainContainer.append(createFutureWeatherDiv(weatherData[day], day));
         }
+        firstRun = false;
     }
     // Animating cards using intersection observer api
     const cards = document.querySelectorAll('.animate');
