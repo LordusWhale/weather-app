@@ -62,7 +62,7 @@ $("#search-city").on("input", (e) => {
 const showSearchResults = async (searchQuery) => {
   // Calling api
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=10&appid=0092dc60f22b7d0f2d8752fc99b3dceb`
   );
   const citiesFound = await response.json();
   if (!citiesFound) return; // Returns if nothing found
