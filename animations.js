@@ -30,7 +30,6 @@ export const animateHomeTitle = () => {
   })
   let els = $('#home-title').children();
     els.each(index=>{
-      console.log(els[index])
       els[index].style.transitionDelay = `${transitionDelayTime}ms`;
       transitionDelayTime += 80
     })
