@@ -46,7 +46,7 @@ const createTodayDiv = (day, date, locationName) => {
     <div>
       <h1>${locationName.substring(0, locationName.indexOf('('))}</h1>
       <h2>${locationName.substring(locationName.indexOf('('))}</h2>
-      <img src="http://openweathermap.org/img/wn/${day.icon}@2x.png" alt="">
+      <img src="https://openweathermap.org/img/wn/${day.icon}@2x.png" alt="">
       <p>${date}</p>
     </div>
     <div class="today-stats">
