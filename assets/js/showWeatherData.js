@@ -53,7 +53,7 @@ const createTodayDiv = (day, date, locationName) => {
       <div>
         <h2>Temperature</h2>
         <ul>
-          <li>Maxium: ${day.temp.highest} C</li>
+          <li>Maximum: ${day.temp.highest} C</li>
           <li>Minimum: ${day.temp.lowest} C</li>
           <li>Average: ${day.temp.average} C</li>
         </ul>
@@ -61,7 +61,7 @@ const createTodayDiv = (day, date, locationName) => {
       <div>
         <h2>Wind</h2>
         <ul>
-          <li>Maxium: ${day.wind.highest} KMPH</li>
+          <li>Maximum: ${day.wind.highest} KMPH</li>
           <li>Minimum: ${day.wind.lowest} KMPH</li>
           <li>Average: ${day.wind.average} KMPH</li>
         </ul>
@@ -69,7 +69,7 @@ const createTodayDiv = (day, date, locationName) => {
       <div>
         <h2>Humidity</h2>
         <ul>
-          <li>Maxium: ${day.humidity.highest}%</li>
+          <li>Maximum: ${day.humidity.highest}%</li>
           <li>Minimum: ${day.humidity.lowest}%</li>
           <li>Average: ${day.humidity.average}%</li>
         </ul>
